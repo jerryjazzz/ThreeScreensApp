@@ -12,6 +12,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +27,8 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private EditText editMobile;
     private String phoneText;
+    private String deviceName;
+    private List<String> emails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         editMobile = (EditText) findViewById(R.id.editText1);
         setSupportActionBar(toolbar);
         getLoaderManager().initLoader(0, null, this);
+        deviceName = android.os.Build.MODEL;
+        Log.v("Device name:", deviceName);
     }
 
     @Override
@@ -57,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        List<String> emails = new ArrayList<String>();
+        emails = new ArrayList<String>();
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             emails.add(cursor.getString(ProfileQuery.ADDRESS));
@@ -84,6 +89,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         String yourURL = "";
         phoneText = editMobile.getText().toString();
         if(phoneText.length() >= 11 && phoneText.length() <= 15) {
+            for(String email : emails) {
+                Log.v("Email Address:", email);
+            }
             Intent i = new Intent(getApplicationContext(), ConfirmationActivity.class);
             i.putExtra("phoneText", phoneText);
             startActivity(i);
