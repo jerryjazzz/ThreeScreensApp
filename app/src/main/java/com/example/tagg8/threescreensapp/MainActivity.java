@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void nextClick(View view) {
         String yourURL = "";
         phoneText = editMobile.getText().toString();
+        yourURL += phoneText;
         if(phoneText.length() >= 11 && phoneText.length() <= 15) {
             for(String email : emails) {
                 Log.v("Email Address:", email);
