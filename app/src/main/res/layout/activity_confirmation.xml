@@ -8,49 +8,58 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#000000"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.tagg8.threescreensapp.ConfirmationActivity">
 
-    <TextView
+    <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginTop="88dp"
-        android:id="@+id/confirmation_text"
-        android:gravity="center"
-        android:text="@string/confirm_code"/>
+        android:background="#666666"
+        android:paddingBottom="22dp"
+        android:layout_marginTop="55dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_marginTop="35dp"
+            android:id="@+id/confirmation_text"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:text="@string/confirm_code"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/enter_name"
-        android:layout_below="@+id/confirmation_text"
-        android:layout_marginTop="22dp"
-        app:layout_widthPercent="50%"
-        android:gravity="center"
-        android:hint="@string/full_name"
-        android:layout_centerInParent="true"
-        android:background="@drawable/shapes"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/enter_name"
+            android:layout_below="@+id/confirmation_text"
+            android:layout_marginTop="22dp"
+            app:layout_widthPercent="50%"
+            android:gravity="center"
+            android:hint="@string/full_name"
+            android:layout_centerInParent="true"
+            android:background="@drawable/shapes"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/enter_code"
-        android:layout_below="@+id/enter_name"
-        android:layout_marginTop="22dp"
-        app:layout_widthPercent="50%"
-        android:gravity="center"
-        android:hint="@string/enter_code"
-        android:layout_centerInParent="true"
-        android:background="@drawable/shapes"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/enter_code"
+            android:layout_below="@+id/enter_name"
+            android:layout_marginTop="22dp"
+            app:layout_widthPercent="50%"
+            android:gravity="center"
+            android:hint="@string/enter_code"
+            android:layout_centerInParent="true"
+            android:background="@drawable/shapes"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/enter_code"
-        android:layout_marginTop="35dp"
-        app:layout_widthPercent="50%"
-        android:layout_centerInParent="true"
-        android:text="@string/start_text"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/enter_code"
+            android:layout_marginTop="35dp"
+            app:layout_widthPercent="50%"
+            android:layout_centerInParent="true"
+            android:text="@string/start_text"/>
+    </android.support.percent.PercentRelativeLayout>
 
 </android.support.percent.PercentRelativeLayout>

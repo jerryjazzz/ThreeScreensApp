@@ -35,10 +35,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         editMobile = (EditText) findViewById(R.id.editText1);
         editMobile.setImeActionLabel("Custom text", KeyEvent.KEYCODE_ENTER);
-        //setSupportActionBar(toolbar);
         getLoaderManager().initLoader(0, null, this);
         deviceName = android.os.Build.MODEL;
         Log.v("Device name:", deviceName);
