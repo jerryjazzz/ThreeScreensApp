@@ -13,6 +13,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +27,7 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private EditText editMobile;
-    private String phoneText;
+    private int phoneNum;
     private String deviceName;
     private List<String> emails;
 
@@ -34,9 +35,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         editMobile = (EditText) findViewById(R.id.editText1);
-        setSupportActionBar(toolbar);
+        editMobile.setImeActionLabel("Custom text", KeyEvent.KEYCODE_ENTER);
+        //setSupportActionBar(toolbar);
         getLoaderManager().initLoader(0, null, this);
         deviceName = android.os.Build.MODEL;
         Log.v("Device name:", deviceName);
@@ -87,14 +89,15 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     public void nextClick(View view) {
         String yourURL = "";
-        phoneText = editMobile.getText().toString();
-        yourURL += phoneText;
-        if(phoneText.length() >= 11 && phoneText.length() <= 15) {
+        phoneNum = Integer.valueOf(editMobile.getText().toString());
+        yourURL += phoneNum;
+        int phoneLength = (int)(Math.log10(phoneNum)+1);
+        if(phoneLength >= 11 && phoneLength <= 15) {
             for(String email : emails) {
                 Log.v("Email Address:", email);
             }
             Intent i = new Intent(getApplicationContext(), ConfirmationActivity.class);
-            i.putExtra("phoneText", phoneText);
+            i.putExtra("phoneNum", phoneNum);
             startActivity(i);
         }
         else {
