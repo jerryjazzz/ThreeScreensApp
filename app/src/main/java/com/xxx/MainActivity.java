@@ -1,4 +1,4 @@
-package com.example.tagg8.threescreensapp;
+package com.xxx;
 
 import android.app.LoaderManager;
 import android.content.CursorLoader;
@@ -19,6 +19,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
+
+
+
 import java.util.*;
 
 import java.lang.Object.*;
@@ -27,7 +30,7 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private EditText editMobile;
-    private int phoneNum;
+    private long phoneNum;
     private String deviceName;
     private List<String> emails;
 
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         editMobile = (EditText) findViewById(R.id.editText1);
-        editMobile.setImeActionLabel("Custom text", KeyEvent.KEYCODE_ENTER);
+        editMobile.setImeActionLabel("GO", KeyEvent.KEYCODE_ENTER);
         getLoaderManager().initLoader(0, null, this);
         deviceName = android.os.Build.MODEL;
         Log.v("Device name:", deviceName);
@@ -87,21 +90,23 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     public void nextClick(View view) {
         String yourURL = "";
-        phoneNum = Integer.valueOf(editMobile.getText().toString());
-        yourURL += phoneNum;
-        int phoneLength = (int)(Math.log10(phoneNum)+1);
-        if(phoneLength >= 11 && phoneLength <= 15) {
-            for(String email : emails) {
-                Log.v("Email Address:", email);
-            }
+        phoneNum = Long.parseLong(editMobile.getText().toString());
+        String phoneText = String.valueOf(phoneNum);
+        Log.v("Phone #:",phoneText);
+        yourURL += phoneText;
+        //int phoneLength = (int)(Math.log10(phoneNum)+1);
+        //if(phoneLength >= 11 && phoneLength <= 15) {
+            //for(String email : emails) {
+                //Log.v("Email Address:", email);
+            //}
             Intent i = new Intent(getApplicationContext(), ConfirmationActivity.class);
             i.putExtra("phoneNum", phoneNum);
             startActivity(i);
-        }
-        else {
-            Toast.makeText(MainActivity.this, "Not a valid international phone number!",
-                    Toast.LENGTH_LONG).show();
-        }
+        //}
+        //else {
+            //Toast.makeText(MainActivity.this, "Not a valid international phone number!",
+                    //Toast.LENGTH_LONG).show();
+        //}
         /*try {
             URL yourLink = new URL(yourURL);
             HttpURLConnection urlConnection = (HttpURLConnection) yourLink.openConnection();

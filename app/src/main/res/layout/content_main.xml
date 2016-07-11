@@ -10,13 +10,16 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:background="#000000"
-    tools:context="com.example.tagg8.threescreensapp.MainActivity"
+    tools:context="com.xxx.MainActivity"
     tools:showIn="@layout/activity_main">
 
     <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#666666"
+        android:paddingTop="22dp"
+        android:paddingBottom="22dp"
+        android:layout_marginTop="66dp"
         >
         <TextView
             android:layout_width="match_parent"
@@ -47,6 +50,8 @@
             android:text="@string/next_button"
             android:onClick="nextClick"
             android:layout_marginTop="30dp"
+            android:background="#333333"
+            android:textColor="#FFFFFF"
             android:layout_width="wrap_content" />
     </android.support.percent.PercentRelativeLayout>
 </android.support.percent.PercentRelativeLayout>
