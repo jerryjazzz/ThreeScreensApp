@@ -19,6 +19,7 @@ public class ConfirmationActivity extends AppCompatActivity {
     private int confirmNum;
     private String confirmName;
     private String phoneText;
+    private String confirmNumText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,6 @@ public class ConfirmationActivity extends AppCompatActivity {
         phoneNum = (long)intent.getSerializableExtra("phoneNum");
         editConfirm = (EditText) findViewById(R.id.enter_code);
         editName = (EditText) findViewById(R.id.enter_name);
-        confirmName = editName.getText().toString();
         phoneText = String.valueOf(phoneNum);
         Log.v("Phone Text:", phoneText);
 
@@ -37,8 +37,20 @@ public class ConfirmationActivity extends AppCompatActivity {
     public void confirmClick(View view) {
         String yourUrl = "";
         confirmNum = Integer.parseInt(editConfirm.getText().toString());
+        confirmNumText = editConfirm.getText().toString();
+        confirmName = editName.getText().toString();
+        Log.v("Confirmation number", confirmNumText);
         if(confirmNum % 17 == 0) {
-            yourUrl += confirmName + phoneText;
+            //yourUrl += confirmName + phoneText;
+            if(confirmName.contains(" ")) {
+                Intent i = new Intent(getApplicationContext(), TableActivity.class);
+                //i.putExtra()
+                startActivity(i);
+            }
+            else {
+                Toast.makeText(ConfirmationActivity.this, "Not a valid full name!",
+                        Toast.LENGTH_LONG).show();
+            }
         }
         else {
             Toast.makeText(ConfirmationActivity.this, "Not a valid confirmation number!",

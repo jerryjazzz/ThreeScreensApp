@@ -16,7 +16,7 @@
     <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#666666"
+        android:background="@drawable/roundedbackground"
         android:paddingTop="22dp"
         android:paddingBottom="22dp"
         android:layout_marginTop="66dp"
@@ -50,7 +50,7 @@
             android:text="@string/next_button"
             android:onClick="nextClick"
             android:layout_marginTop="30dp"
-            android:background="#333333"
+            android:background="@drawable/roundedbutton"
             android:textColor="#FFFFFF"
             android:layout_width="wrap_content" />
     </android.support.percent.PercentRelativeLayout>

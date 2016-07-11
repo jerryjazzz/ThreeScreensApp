@@ -10,12 +10,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#000000"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.tagg8.threescreensapp.ConfirmationActivity">
+    tools:context="com.xxx.ConfirmationActivity">
 
     <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#666666"
+        android:background="@drawable/roundedbackground"
         android:paddingBottom="22dp"
         android:layout_marginTop="55dp">
         <TextView
@@ -59,8 +59,9 @@
             android:layout_marginTop="35dp"
             app:layout_widthPercent="50%"
             android:layout_centerInParent="true"
-            android:background="#333333"
+            android:background="@drawable/roundedbutton"
             android:textColor="#FFFFFF"
+            android:onClick="confirmClick"
             android:text="@string/start_text"/>
     </android.support.percent.PercentRelativeLayout>
 
